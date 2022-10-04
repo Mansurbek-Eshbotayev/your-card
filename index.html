@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Document</title>
+  </head>
+  <body class="site-body bg-info">
+    <section class="card bg-info mt-5 h-100">
+      <div class="container">
+        <h1 class="h1 text-center mt-4 mb-4">Create Your Card</h1>
+        <div class="card__inner d-flex">
+          <form class="form mb-5 mt-5 me-5" method="post" autocomplete="off">
+            <input
+              class="form__title form-control mb-3"
+              type="text"
+              name="your_name"
+              placeholder="Enter Your Name"
+            />
+
+            <input
+              class="form__rel form-control mb-3"
+              type="text"
+              name="your_rel"
+              placeholder="Enter Relation"
+            />
+
+            <input
+              class="form__tel form-control mb-3"
+              type="tel"
+              name="your_tel"
+              placeholder="Enter number"
+              value="+998"
+            />
+
+            <button class="card__btn btn btn-success" type="submit">
+              Create
+            </button>
+          </form>
+          <ul class="card__list list-unstyled d-flex flex-wrap mt-5"></ul>
+        </div>
+      </div>
+      <template class="card-template">
+        <li class="card__item bg-success p-4 rounded-3 bg-white h-75 me-3 mb-3">
+          <h3 class="card__title text-primary h3"></h3>
+          <p class="card__rel text-danger mb-2"></p>
+          <a class="card__tel text-dark d-block mb-2" href="#"></a>
+          <button class="card__del btn btn-danger">Delet</button>
+        </li>
+      </template>
+    </section>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
