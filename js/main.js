@@ -4,10 +4,20 @@ var elInputRel = document.querySelector(".form__rel");
 var elInputTel = document.querySelector(".form__tel");
 var elList = document.querySelector(".card__list");
 
-var data = [];
+var data = JSON.parse(window.localStorage.getItem("data")) || [];
 
 elForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
+
+  // find Number
+  let findNumber = data.findIndex((contact) => {
+    return contact.user_tel == elInputTel.value;
+  });
+  if (findNumber > -1) {
+    alert("Bunday raqam mavjud !");
+    return;
+  }
+
   var inputName = elInputTitle.value.trim();
   var inputRel = elInputRel.value.trim();
   var inputTel = elInputTel.value.trim();
@@ -22,6 +32,8 @@ elForm.addEventListener("submit", function (evt) {
   if (inputName && inputRel && inputTel !== "") {
     data.push(obj);
   }
+
+  window.localStorage.setItem("data", JSON.stringify(data));
 
   createData(data);
   elForm.reset();
@@ -38,6 +50,10 @@ function createData(arr) {
     cloneTemplate.querySelector(".card__title").textContent = obj.user_name;
     cloneTemplate.querySelector(".card__rel").textContent = obj.user_rel;
     cloneTemplate.querySelector(".card__tel").textContent = obj.user_tel;
+    cloneTemplate.querySelector(".card__tel").dataset.id = obj.id;
+    cloneTemplate
+      .querySelector(".card__tel")
+      .setAttribute("href", `tel:${obj.user_tel}`);
     cloneTemplate.querySelector(".card__del").dataset.id = obj.id;
 
     fragment.appendChild(cloneTemplate);
@@ -52,5 +68,8 @@ elList.addEventListener("click", function (evt) {
     let itemId = data.findIndex((obj) => obj.id === btnId);
     data.splice(itemId, 1);
     createData(data);
+    window.localStorage.setItem("data", JSON.stringify(data));
   }
 });
+
+createData(data);

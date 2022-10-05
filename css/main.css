@@ -1,3 +1,9 @@
 .card {
   height: 100%;
 }
+
+.card__item {
+  width: 100%;
+  max-width: 250px;
+  height: 200px;
+}
